@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 using Uniject;
+using System.Linq;
 
 namespace Uniject.Impl {
     public class UnityGameObject : TestableGameObject {
@@ -9,7 +10,8 @@ namespace Uniject.Impl {
         public GameObject obj { get; private set; }
         public UnityGameObject (GameObject obj) : base(new UnityTransform(obj)) {
             this.obj = obj;
-            obj.AddComponent<UnityGameObjectBridge>().wrapping = this;
+            this.bridge = obj.AddComponent<UnityGameObjectBridge>();
+            this.bridge.wrapping = this;
         }
 
         public override void Destroy() {
@@ -30,6 +32,21 @@ namespace Uniject.Impl {
         public override void setActiveRecursively(bool active) {
             obj.SetActiveRecursively(active);
         }
+
+        public override T getComponent<T>()
+        {
+            if (obj != null)
+            {
+                var component = obj.GetComponents(typeof(T)).FirstOrDefault() as T;
+                
+                if (component != null)
+                {
+                    return component;
+                }
+            }
+            return base.getComponent<T>();
+        }
+
 
         public override int layer {
             get { return obj.layer; }
