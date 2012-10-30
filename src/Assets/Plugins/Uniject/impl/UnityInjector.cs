@@ -21,7 +21,16 @@ public class UnityInjector
         return kernel;
     }
     
-    public static object levelScope = new object();
+    private static object _levelScope = new object();
+    public static object levelScope {
+        get { return _levelScope; }
+        set
+        {
+            _levelScope = value;
+            kernel = null;
+        }
+    }
+
     private static object scoper(Ninject.Activation.IContext context) {
         return levelScope;
     }
