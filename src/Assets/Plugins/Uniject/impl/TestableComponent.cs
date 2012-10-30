@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 
 namespace Uniject {
     public class TestableComponent {
@@ -13,7 +14,8 @@ namespace Uniject {
         }
         
         public TestableGameObject Obj {
-            get { return obj; } 
+            get { return obj; }
+            set { obj = value; }
         }
 
         public void OnUpdate() {
@@ -21,6 +23,12 @@ namespace Uniject {
                 Update();
             }
         }
+
+        public void StartCoroutine(IEnumerator cr)
+        {
+            obj.bridge.StartCoroutine(cr);   
+        }
+
 
         public virtual void Update() {
         }
