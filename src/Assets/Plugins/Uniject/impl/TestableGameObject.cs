@@ -12,6 +12,8 @@ namespace Uniject {
 
         private List<TestableComponent> components = new List<TestableComponent>();
 
+        public UnityGameObjectBridge bridge { get; protected set; }
+
         public ITransform transform { get; private set; }
 
         public TestableGameObject(ITransform transform) {
@@ -42,7 +44,7 @@ namespace Uniject {
             }
         }
 
-        public T getComponent<T>() where T : class {
+        public virtual T getComponent<T>() where T : class {
             for (int t = 0; t < components.Count; t++) {
                 TestableComponent component = components[t];
                 if (component is T) {
