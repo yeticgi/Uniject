@@ -12,7 +12,7 @@ namespace Uniject {
             this.obj = obj;
             obj.registerComponent(this);
         }
-        
+
         public TestableGameObject Obj {
             get { return obj; }
             set { obj = value; }
@@ -24,19 +24,39 @@ namespace Uniject {
             }
         }
 
+        public void StartCoroutine(string name, params object[] args)
+        {
+            obj.bridge.StartCoroutine ("CoroutineBridge", new object[] { this, name, args });
+        }
+
         public void StartCoroutine(IEnumerator cr)
         {
-            obj.bridge.StartCoroutine(cr);   
+            obj.bridge.StartCoroutine(cr); // TODO: Use a named method to kick this off so IEnumerator-based coroutines also stop when using StopCoroutines()
         }
 
-
-        public virtual void Update() {
+        public void StopCoroutines()
+        {
+            obj.bridge.StopCoroutine("CoroutineBridge");
         }
 
-        public virtual void OnDestroy() {
+        public virtual void Awake()
+        {
         }
 
-        public virtual void OnCollisionEnter(Collision collision) {
+        public virtual void Update()
+        {
+        }
+
+        public virtual void OnDestroy()
+        {
+        }
+
+        public virtual void OnGUI()
+        {
+        }
+
+        public virtual void OnCollisionEnter(Collision collision)
+        {
         }
     }
 }

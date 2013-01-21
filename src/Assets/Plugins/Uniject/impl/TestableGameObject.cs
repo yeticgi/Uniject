@@ -22,6 +22,7 @@ namespace Uniject {
 
         public void registerComponent (Uniject.TestableComponent component) {
             components.Add(component);
+            component.Awake();
         }
 
         public bool destroyed { get; private set; }
@@ -44,6 +45,15 @@ namespace Uniject {
             }
         }
 
+        public void OnGUI() {
+            if (active) {
+                for (int t = 0; t < components.Count; t++) {
+                    TestableComponent component = components[t];
+                    component.OnGUI();
+                }
+            }
+        }
+
         public virtual T getComponent<T>() where T : class {
             for (int t = 0; t < components.Count; t++) {
                 TestableComponent component = components[t];
@@ -53,6 +63,11 @@ namespace Uniject {
             }
 
             return null;
+        }
+
+        public virtual IEnumerable<TestableComponent> getComponents()
+        {
+            return components;
         }
 
         public void OnCollisionEnter(Collision c) {
