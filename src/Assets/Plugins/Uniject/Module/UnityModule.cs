@@ -10,6 +10,7 @@ public class UnityModule : NinjectModule {
 
     public override void Load() {
         Bind<GameObject>().ToProvider<GameObjectProvider>().InScope(Scoping.GameObjectBoundaryScoper);
+        Bind<TestableGameObject>().To<UnityGameObject>().InScope(Scoping.GameObjectBoundaryScoper);
         Bind<IAudioSource>().To <UnityAudioSource>();
         Bind<ILogger>().To<UnityLogger>();
         Bind<IRigidBody>().To<UnityRigidBody>().InScope(Scoping.GameObjectBoundaryScoper);
@@ -29,7 +30,7 @@ public class UnityModule : NinjectModule {
         Bind<ITransform>().To<UnityTransform>().InScope(Scoping.GameObjectBoundaryScoper);
         Bind<ILight>().To<UnityLight>().InScope(Scoping.GameObjectBoundaryScoper);
 
-        Bind<TestableGameObject>().ToProvider<PrefabProvider>();
+        Bind<TestableGameObject>().ToProvider<PrefabProvider>().WhenTargetHas(typeof(Resource));
         Bind<AudioClip>().ToProvider<ResourceProvider<AudioClip>>().WhenTargetHas(typeof(Resource));
         Bind<PhysicMaterial>().ToProvider<ResourceProvider<PhysicMaterial>>();
         Bind<IPhysicMaterial>().To<UnityPhysicsMaterial>();

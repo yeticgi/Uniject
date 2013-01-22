@@ -14,7 +14,8 @@ public class UnityInjector
         if (null == kernel)
         {
             kernel = new StandardKernel(new UnityNinjectSettings(), new Ninject.Modules.INinjectModule[] {
-                new UnityModule()
+                new UnityModule(),
+                new LateBoundModule(),
             });
             if (listener == null)
             {
@@ -36,4 +37,3 @@ public class UnityInjector
         return levelScope;
     }
 }
-
