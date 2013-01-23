@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{94F2BFB1-C7C7-4A0E-954F-B46E8DCE66DD}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Uniject.Unity</RootNamespace>
+    <AssemblyName>Uniject.Unity</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
+    <Compile Include="UnityTransform.cs" />
+    <Compile Include="UnityTime.cs" />
+    <Compile Include="UnitySphereCollider.cs" />
+    <Compile Include="UnityAudioListener.cs" />
+    <Compile Include="UnityAudioSource.cs" />
+    <Compile Include="UnityBoxCollider.cs" />
+    <Compile Include="UnityGameObject.cs" />
+    <Compile Include="UnityInjector.cs" />
+    <Compile Include="UnityInput.cs" />
+    <Compile Include="UnityLayerMask.cs" />
+    <Compile Include="UnityLight.cs" />
+    <Compile Include="UnityLogger.cs" />
+    <Compile Include="UnityMath.cs" />
+    <Compile Include="UnityModule.cs" />
+    <Compile Include="UnityNavmeshAgent.cs" />
+    <Compile Include="UnityNinjectSettings.cs" />
+    <Compile Include="UnityPhysics.cs" />
+    <Compile Include="UnityPhysicsMaterial.cs" />
+    <Compile Include="UnityResourceLoader.cs" />
+    <Compile Include="UnityRigidBody.cs" />
+    <Compile Include="UnityScreen.cs" />
+    <Compile Include="Collision.cs" />
+    <Compile Include="GameObjectProvider.cs" />
+    <Compile Include="LevelLoadListener.cs" />
+    <Compile Include="PrefabProvider.cs" />
+    <Compile Include="ResourceProvider.cs" />
+    <Compile Include="IntervalBasedCallback.cs" />
+    <Compile Include="AndroidPlatformUtil.cs" />
+    <Compile Include="ToUnityExtensions.cs" />
+    <Compile Include="ToUnijectExtensions.cs" />
+    <Compile Include="UnityComponent.cs" />
+    <Compile Include="UnityAudioClip.cs" />
+    <Compile Include="UnityBridgeComponent.cs" />
+    <Compile Include="LateBoundModule.cs" />
+    <Compile Include="UnityAccelerationEvent.cs" />
+    <Compile Include="UnityTouch.cs" />
+    <Compile Include="UnityCollider.cs" />
+    <Compile Include="UnityMaterial.cs" />
+    <Compile Include="ResourceAttribute.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\Uniject\Uniject.csproj">
+      <Project>{C85AE4D3-4097-4336-A7FF-B2F286103C34}</Project>
+      <Name>Uniject</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>

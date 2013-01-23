@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C85AE4D3-4097-4336-A7FF-B2F286103C34}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Uniject</RootNamespace>
+    <AssemblyName>Uniject</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>False</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <DebugType>none</DebugType>
+    <Optimize>True</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>False</ConsolePause>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Compile Include="Factory.cs" />
+    <Compile Include="GameObjectBoundary.cs" />
+    <Compile Include="Scoping.cs" />
+    <Compile Include="XMLConfigurationManager.cs" />
+    <Compile Include="IAudioListener.cs" />
+    <Compile Include="IAudioSource.cs" />
+    <Compile Include="IBoxCollider.cs" />
+    <Compile Include="ICollider.cs" />
+    <Compile Include="IInput.cs" />
+    <Compile Include="ILayerMask.cs" />
+    <Compile Include="ILight.cs" />
+    <Compile Include="ILogger.cs" />
+    <Compile Include="IMaths.cs" />
+    <Compile Include="INavmeshAgent.cs" />
+    <Compile Include="IPhysics.cs" />
+    <Compile Include="IPlatformUtil.cs" />
+    <Compile Include="IResourceLoader.cs" />
+    <Compile Include="IRigidBody.cs" />
+    <Compile Include="IScreen.cs" />
+    <Compile Include="ISphereCollider.cs" />
+    <Compile Include="ITime.cs" />
+    <Compile Include="ITransform.cs" />
+    <Compile Include="IUtil.cs" />
+    <Compile Include="Vector3.cs" />
+    <Compile Include="ITouch.cs" />
+    <Compile Include="IAccelerationEvent.cs" />
+    <Compile Include="LightType.cs" />
+    <Compile Include="Color.cs" />
+    <Compile Include="LightShadows.cs" />
+    <Compile Include="IGameObject.cs" />
+    <Compile Include="IAudioClip.cs" />
+    <Compile Include="LightRenderMode.cs" />
+    <Compile Include="Quaternion.cs" />
+    <Compile Include="ObstacleAvoidanceType.cs" />
+    <Compile Include="PhysicMaterialCombine.cs" />
+    <Compile Include="Vector2.cs" />
+    <Compile Include="IUnityObject.cs" />
+    <Compile Include="IMaterial.cs" />
+    <Compile Include="ForceMode.cs" />
+    <Compile Include="RigidbodyConstraints.cs" />
+    <Compile Include="Resolution.cs" />
+    <Compile Include="ScreenOrientation.cs" />
+    <Compile Include="RuntimePlatform.cs" />
+    <Compile Include="IPhysicsMaterial.cs" />
+    <Compile Include="IComponent.cs" />
+    <Compile Include="ICollision.cs" />
+    <Compile Include="XMLConfigProvider.cs" />
+    <Compile Include="RaycastHit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Ninject">
+      <HintPath>..\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+  </ItemGroup>
+</Project>
