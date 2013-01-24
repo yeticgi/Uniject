@@ -34,12 +34,12 @@
     <Reference Include="UnityEngine">
       <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
     </Reference>
-    <Reference Include="Ninject">
-      <HintPath>..\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -89,5 +89,8 @@
       <Project>{C85AE4D3-4097-4336-A7FF-B2F286103C34}</Project>
       <Name>Uniject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

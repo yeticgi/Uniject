@@ -85,9 +85,12 @@
   <ItemGroup>
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="Ninject">
-      <HintPath>..\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
-    </Reference>
     <Reference Include="System.Data.Linq" />
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

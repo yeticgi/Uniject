@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>Uniject.Unity</id>
+    <version>1.0.0</version>
+    <title>Uniject.Unity</title>
+    <authors>banderous,kibiz0r,wbonner</authors>
+    <owners>banderous,kibiz0r,wbonner</owners>
+    <licenseUrl>https://raw.github.com/banderous/Uniject/master/MIT-LICENSE.txt</licenseUrl>
+    <projectUrl>https://github.com/banderous/Uniject</projectUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The testability framework for Unity3D</description>
+    <copyright>Copyright 2013</copyright>
+    <tags>unity ninject di dependencyInjection ioc inversionOfControl</tags>
+    <dependencies>
+      <dependency id="Uniject" version="1.0.0" />
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="bin/Release/Uniject.Unity.dll" target="lib/net35" />
+    <file src="bin/Release/Uniject.Unity.dll" target="content/Assets/Plugins" />
+    <file src="bin/Release/Uniject.dll" target="content/Assets/Plugins" />
+    <file src="bin/Release/Ninject.dll" target="content/Assets/Plugins" />
+  </files>
+</package>
