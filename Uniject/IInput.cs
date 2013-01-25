@@ -6,7 +6,7 @@ namespace Uniject {
     /// Extracted from UnityEngine.Input.
     /// </summary>
     public interface IInput {
-        Vector3 mousePosition { get; }
+        Vector3 MousePosition { get; }
         bool anyKey { get; }
         bool anyKeyDown { get; }
         string inputString { get; }
@@ -14,7 +14,7 @@ namespace Uniject {
         IAccelerationEvent[] accelerationEvents { get; }
         int accelerationEventCount { get; }
         ITouch[] touches { get; }
-        int touchCount { get; }
+        int TouchCount { get; }
         bool multiTouchEnabled { get; }
 
         float GetAxis(string name);

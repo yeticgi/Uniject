@@ -5,19 +5,19 @@ namespace Uniject.Unity
 {
     public class UnityComponent : IComponent
 	{
-        private IGameObject obj;
+		public IGameObject GameObject { get; private set; }
 
         public bool enabled { get; set; }
 
         public UnityComponent(IGameObject obj) {
             this.enabled = true;
-            this.obj = obj;
+            this.GameObject = obj;
             obj.RegisterComponent(this);
         }
 
         public IGameObject Obj {
-            get { return obj; }
-            set { obj = value; }
+            get { return GameObject; }
+            set { GameObject = value; }
         }
 
         public void OnUpdate() {
@@ -28,27 +28,27 @@ namespace Uniject.Unity
 
         public void StartCoroutine(string name, params object[] args)
         {
-            obj.Bridge.StartCoroutine ("CoroutineBridge", new object[] { this, name, args });
+            GameObject.Bridge.StartCoroutine ("CoroutineBridge", new object[] { this, name, args });
         }
 
 		public void StartCoroutine (string coroutine)
 		{
-			obj.Bridge.StartCoroutine(coroutine);
+			GameObject.Bridge.StartCoroutine(coroutine);
 		}
 
         public void StartCoroutine(IEnumerator coroutine)
         {
-            obj.Bridge.StartCoroutine(coroutine); // TODO: Use a named method to kick this off so IEnumerator-based coroutines also stop when using StopCoroutines()
+            GameObject.Bridge.StartCoroutine(coroutine); // TODO: Use a named method to kick this off so IEnumerator-based coroutines also stop when using StopCoroutines()
         }
 
         public void StopCoroutines()
         {
-            obj.Bridge.StopCoroutine("CoroutineBridge");
+            GameObject.Bridge.StopCoroutine("CoroutineBridge");
         }
 
 		public void StopCoroutine(string coroutine)
 		{
-			obj.Bridge.StopCoroutine(coroutine);
+			GameObject.Bridge.StopCoroutine(coroutine);
 		}
 
         public virtual void Awake()
@@ -67,7 +67,7 @@ namespace Uniject.Unity
         {
         }
 
-        public virtual void OnCollisionEnter(ICollision collision)
+        public virtual void CollisionEnter(ICollision collision)
         {
         }
     }

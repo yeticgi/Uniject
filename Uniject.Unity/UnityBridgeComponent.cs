@@ -13,19 +13,19 @@ namespace Uniject.Unity
 		}
 
 	    public void OnDestroy() {
-	        wrapping.Destroy();
+	        _gameObject.Destroy();
 	    }
 
 	    public void Update() {
-	        wrapping.Update();
+	        _gameObject.Update();
 	    }
 
 	    public void OnGUI()
 	    {
-	        wrapping.OnGUI();
+	        _gameObject.OnGUI();
 	    }
 
-		public void OnCollisionEnter(ICollision collision)
+		public void CollisionEnter(ICollision collision)
 		{
 		}
 
@@ -54,14 +54,14 @@ namespace Uniject.Unity
 			base.StopCoroutine(coroutine);
 		}
 
-	    public void OnCollisionEnter(UnityEngine.Collision c) {
+	    public void CollisionEnter(UnityEngine.Collision c) {
 	        UnityBridgeComponent other = c.gameObject.GetComponent<UnityBridgeComponent>();
 	        if (null != other) {
 	                Collision testableCollision = new Collision(c.relativeVelocity.ToUniject(),
-				                                            other.wrapping.transform,
-				                                            other.wrapping,
+				                                            other.GameObject.Transform,
+				                                            other.GameObject,
 				                                            c.contacts);
-	            wrapping.OnCollisionEnter(testableCollision);
+	            _gameObject.CollisionEnter(testableCollision);
 	        }
 	    }
 
@@ -73,6 +73,10 @@ namespace Uniject.Unity
 	        return _this.GetType ().InvokeMember(coroutineName, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic, null, _this, args) as IEnumerator;
 	    }
 
-	    public UnityGameObject wrapping;
+		private UnityGameObject _gameObject;
+		public IGameObject GameObject {
+			get { return _gameObject; }
+			set { _gameObject = value as UnityGameObject; }
+		}
 	}
 }

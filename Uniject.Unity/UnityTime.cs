@@ -10,8 +10,12 @@ namespace Uniject.Impl {
         public float DeltaTime {
             get { return Time.deltaTime; }
         }
+
+		public float FixedDeltaTime {
+			get { return Time.fixedDeltaTime; }
+		}
        
-        public float realtimeSinceStartup {
+        public float RealTimeSinceStartup {
             get { return Time.realtimeSinceStartup; }
         }
     }

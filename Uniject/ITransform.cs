@@ -1,13 +1,16 @@
 using System;
+using System.Collections.Generic;
 
-namespace Uniject {
-    public interface ITransform {
+namespace Uniject
+{
+    public interface ITransform : IComponent, IEnumerable<ITransform>
+    {
         Vector3 Position {
             get;
             set;
         }
 
-        Vector3 localScale {
+        Vector3 LocalScale {
             get;
             set;
         }
@@ -31,7 +34,8 @@ namespace Uniject {
 
         void Translate(Vector3 byVector);
         void LookAt(Vector3 point);
-        Vector3  TransformDirection(Vector3 dir);
+        Vector3 TransformDirection(Vector3 dir);
+        ITransform Find(string name);
     }
 }
 

@@ -1,13 +1,16 @@
 using System;
 using UnityEngine;
+using System.Collections.Generic;
+using System.Linq;
+using System.Collections;
 
 namespace Uniject.Unity
 {
-    public class UnityTransform : ITransform {
+    public class UnityTransform : UnityComponent, ITransform {
 
         private Transform transform { get; set; }
 
-        public UnityTransform (Transform transform) {
+        public UnityTransform (Transform transform) : base(transform.gameObject.ToUniject()) {
             this.transform = transform;
         }
 
@@ -16,7 +19,7 @@ namespace Uniject.Unity
             set { transform.position = value.ToUnity(); }
         }
 
-        public Vector3 localScale {
+        public Vector3 LocalScale {
             get { return transform.localScale.ToUniject(); }
             set { transform.localScale = value.ToUnity(); }
         }
@@ -53,9 +56,24 @@ namespace Uniject.Unity
             transform.LookAt(point.ToUnity());
         }
 
+		public ITransform Find(string name)
+		{
+			return transform.Find (name).ToUniject();
+		}
+
         public Vector3 TransformDirection(Vector3 dir) {
             return transform.TransformDirection(dir.ToUnity()).ToUniject();
         }
+
+		public IEnumerator<ITransform> GetEnumerator()
+		{
+			return transform.Cast<ITransform>().GetEnumerator();
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return transform.GetEnumerator();
+		}
     }
 }
 

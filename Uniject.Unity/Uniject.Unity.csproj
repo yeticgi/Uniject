@@ -40,6 +40,9 @@
     <Reference Include="Ninject">
       <HintPath>..\packages\Ninject.3.0.1.10\lib\net35\Ninject.dll</HintPath>
     </Reference>
+    <Reference Include="Uniject">
+      <HintPath>..\packages\Uniject.1.0.0\lib\net35\Uniject.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -84,12 +87,6 @@
     <Compile Include="ResourceAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <ProjectReference Include="..\Uniject\Uniject.csproj">
-      <Project>{C85AE4D3-4097-4336-A7FF-B2F286103C34}</Project>
-      <Name>Uniject</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

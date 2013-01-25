@@ -11,6 +11,12 @@ namespace Uniject.Unity
 		{
 			this.Touch = touch;
 		}
+
+		public Vector2 Position {
+			get {
+				return Touch.position.ToUniject ();
+			}
+		}
 	}
 
 }

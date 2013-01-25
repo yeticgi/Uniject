@@ -5,10 +5,11 @@ namespace Uniject
 {
 	public interface IComponent
 	{
+    	IGameObject GameObject { get; }
 		void Awake();
 		void Update();
 		void OnGUI();
-		void OnCollisionEnter(ICollision collision);
+		void CollisionEnter(ICollision collision);
 		void StartCoroutine(string coroutine, params object[] args);
 		void StartCoroutine(IEnumerator coroutine);
 		void StartCoroutine(string coroutine);

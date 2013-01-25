@@ -58,6 +58,11 @@ namespace Uniject.Unity
 		{
 			return new Resolution(r.width, r.height, r.refreshRate);
 		}
+
+		public static IGameObject ToUniject (this UnityEngine.GameObject g)
+		{
+			return new UnityGameObject(g);
+		}
 	}
 }
 

@@ -5,7 +5,7 @@ using System.Linq;
 namespace Uniject.Unity
 {
     public class UnityInput : IInput {
-        public Vector3 mousePosition { get { return Input.mousePosition.ToUniject(); } }
+        public Vector3 MousePosition { get { return Input.mousePosition.ToUniject(); } }
         public bool anyKey { get { return Input.anyKey; } }
         public bool anyKeyDown { get { return Input.anyKeyDown; } }
         public string inputString { get { return Input.inputString; } }
@@ -13,7 +13,7 @@ namespace Uniject.Unity
         public IAccelerationEvent[] accelerationEvents { get { return Input.accelerationEvents.Select(e => e.ToUniject()).ToArray(); } }
         public int accelerationEventCount { get { return Input.accelerationEventCount; } }
         public ITouch[] touches { get { return Input.touches.Select(t => t.ToUniject()).ToArray(); } }
-        public int touchCount { get { return Input.touchCount; } }
+        public int TouchCount { get { return Input.touchCount; } }
         public bool multiTouchEnabled { get { return Input.multiTouchEnabled; } }
 
         public float GetAxis(string name) { return Input.GetAxis(name); }

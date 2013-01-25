@@ -81,6 +81,10 @@
     <Compile Include="ICollision.cs" />
     <Compile Include="XMLConfigProvider.cs" />
     <Compile Include="RaycastHit.cs" />
+    <Compile Include="IGui.cs" />
+    <Compile Include="IApplication.cs" />
+    <Compile Include="Rect.cs" />
+    <Compile Include="KeyCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Xml" />

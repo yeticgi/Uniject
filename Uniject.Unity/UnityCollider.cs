@@ -7,9 +7,9 @@ namespace Uniject.Unity
 	{
 		public readonly Collider Collider;
 
-		public UnityCollider(Collider c)
+		public UnityCollider(Collider collider)
 		{
-			throw new NotImplementedException ();
+			this.Collider = collider;
 		}
 
 		public bool enabled {

@@ -12,16 +12,16 @@ namespace Uniject.Unity {
 		public IComponent Bridge { get { return bridge; } }
 		private UnityBridgeComponent bridge;
 		
-		public ITransform transform { get; private set; }
+		public ITransform Transform { get; private set; }
 
-		private GameObject obj;
+		public readonly GameObject GameObject;
 
-		public UnityGameObject(GameObject obj)
+		public UnityGameObject(GameObject gameObject)
 		{
-			this.obj = obj;
-			this.bridge = obj.AddComponent<UnityBridgeComponent>();
-			this.bridge.wrapping = this;
-			this.transform = obj.transform.ToUniject();
+			this.GameObject = gameObject;
+			this.bridge = gameObject.AddComponent<UnityBridgeComponent>();
+			this.bridge.GameObject = this;
+			this.Transform = gameObject.transform.ToUniject();
 		}
 		
 		public void RegisterComponent(IComponent component) {
@@ -39,6 +39,11 @@ namespace Uniject.Unity {
 				}
 			}
 		}
+
+		public void DontDestroyOnLoad ()
+		{
+			GameObject.DontDestroyOnLoad (GameObject);
+		}
 		
 		public void OnGUI() {
 			if (active) {
@@ -49,14 +54,24 @@ namespace Uniject.Unity {
 			}
 		}
 		
-		public IEnumerable<IComponent> getComponents()
+		public IEnumerable<IComponent> GetComponents()
 		{
 			return components;
 		}
+
+		public T[] GetComponentsInChildren<T> () where T : class
+		{
+			return typeof(GameObject).GetMethod("GetComponentsInChildren").MakeGenericMethod(new [] { typeof(T) }).Invoke(GameObject, new object[0]) as T[];
+		}
+
+		public T GetComponentInChildren<T> () where T : class
+		{
+			return typeof(GameObject).GetMethod("GetComponentInChildren").MakeGenericMethod(new [] { typeof(T) }).Invoke(GameObject, new object[0]) as T;
+		}
 		
-		public void OnCollisionEnter(Collision c) {
+		public void CollisionEnter(Collision c) {
 			for (int t = 0; t < components.Count; t++) {
-				components[t].OnCollisionEnter(c);
+				components[t].CollisionEnter(c);
 			}
 		}
 
@@ -67,24 +82,24 @@ namespace Uniject.Unity {
 				}
 				destroyed = true;
 			}
-            GameObject.Destroy (this.obj);
+            GameObject.Destroy (this.GameObject);
         }
 
         public bool active {
-            get { return obj.active; }
-            set { obj.active = value; }
+            get { return GameObject.active; }
+            set { GameObject.active = value; }
         }
 
-        public string name {
-            get { return obj.name; }
-            set { obj.name = value; }
+        public string Name {
+            get { return GameObject.name; }
+            set { GameObject.name = value; }
         }
 
         public void setActiveRecursively(bool active) {
-            obj.SetActiveRecursively(active);
+            GameObject.SetActiveRecursively(active);
         }
 
-        public T getComponent<T>() where T : class
+        public T GetComponent<T>() where T : class
         {
 			for (int t = 0; t < components.Count; t++) {
 				IComponent component = components[t];
@@ -93,9 +108,9 @@ namespace Uniject.Unity {
 				}
 			}
 
-            if (obj != null)
+            if (GameObject != null)
             {
-                var component = obj.GetComponents(typeof(T)).FirstOrDefault() as T;
+                var component = GameObject.GetComponents(typeof(T)).FirstOrDefault() as T;
                 
                 if (component != null)
                 {
@@ -108,8 +123,8 @@ namespace Uniject.Unity {
 
 
         public int layer {
-            get { return obj.layer; }
-            set { obj.layer = value; }
+            get { return GameObject.layer; }
+            set { GameObject.layer = value; }
         }
     }
 }

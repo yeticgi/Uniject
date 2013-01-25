@@ -22,7 +22,7 @@ namespace Uniject.Unity
                 IGameObject testable = null;
                 var bridge = unityHit.collider.gameObject.GetComponent<UnityBridgeComponent>();
                 if (null != bridge) {
-                    testable = bridge.wrapping;
+                    testable = bridge.GameObject;
                 }
 
                 hitinfo = new RaycastHit (unityHit.point.ToUniject(),
