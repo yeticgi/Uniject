@@ -12,11 +12,10 @@
     <description>The testability framework for Unity3D</description>
     <copyright>Copyright 2013</copyright>
     <tags>unity ninject di dependencyInjection ioc inversionOfControl</tags>
-    <dependencies>
-      <dependency id="Ninject" version="[3.0.0.0,3.1.0.0)" />
-    </dependencies>
   </metadata>
   <files>
     <file src="bin/Release/Uniject.dll" target="lib/net35" />
+    <file src="lib/Ninject.dll" target="lib/net35" />
+    <file src="lib/System.Xml.Linq.dll" target="lib/net35" />
   </files>
 </package>
