@@ -4,13 +4,14 @@ using System;
 using Uniject;
 using Uniject.Impl;
 using Uniject.Configuration;
+using UnityEngine;
 
 namespace Uniject.Unity
 {
 	public class UnityModule : NinjectModule {
 
 	    public override void Load() {
-	        Bind<IGameObject>().ToProvider<GameObjectProvider>().InScope(Scoping.GameObjectBoundaryScoper);
+	        Bind<GameObject>().ToProvider<GameObjectProvider>().InScope(Scoping.GameObjectBoundaryScoper);
 	        Bind<IGameObject>().To<UnityGameObject>().InScope(Scoping.GameObjectBoundaryScoper);
 	        Bind<IAudioSource>().To <UnityAudioSource>();
 	        Bind<ILogger>().To<UnityLogger>();
@@ -21,6 +22,9 @@ namespace Uniject.Unity
 
 	        Bind<IMaths>().To<UnityMath>().InSingletonScope();
 	        Bind<ITime>().To<UnityTime>().InSingletonScope();
+	        Bind<IApplication>().To<UnityApplication>().InSingletonScope();
+			Bind<IGui>().To<UnityGui>().InSingletonScope();
+			Bind<IScreen>().To<UnityScreen>().InSingletonScope();
 	        Bind<ILayerMask>().To<UnityLayerMask>().InSingletonScope();
 	        Bind<IResourceLoader>().To<UnityResourceLoader>().InSingletonScope();
 	        Bind<IInput>().To<UnityInput>().InSingletonScope();

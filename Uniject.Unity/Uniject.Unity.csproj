@@ -85,6 +85,8 @@
     <Compile Include="UnityCollider.cs" />
     <Compile Include="UnityMaterial.cs" />
     <Compile Include="ResourceAttribute.cs" />
+    <Compile Include="UnityApplication.cs" />
+    <Compile Include="UnityGui.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

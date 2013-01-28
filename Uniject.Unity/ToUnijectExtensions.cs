@@ -59,8 +59,13 @@ namespace Uniject.Unity
 			return new Resolution(r.width, r.height, r.refreshRate);
 		}
 
-		public static IGameObject ToUniject (this UnityEngine.GameObject g)
+		public static IGameObject ToUniject(this UnityEngine.GameObject g)
 		{
+      var bridge = g.GetComponent<UnityBridgeComponent>();
+      if (bridge != null)
+      {
+        return bridge.GameObject;
+      }
 			return new UnityGameObject(g);
 		}
 	}

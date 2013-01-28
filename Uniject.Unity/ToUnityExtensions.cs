@@ -23,6 +23,11 @@ namespace Uniject.Unity
 		{
 			return new UnityEngine.Color(c.R, c.G, c.B, c.A);
 		}
+
+		public static UnityEngine.Rect ToUnity(this Rect r)
+		{
+			return new UnityEngine.Rect(r.Left, r.Top, r.Width, r.Height);
+		}
 	}
 }
 

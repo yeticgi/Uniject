@@ -25,34 +25,34 @@ namespace Uniject.Unity
 	        _gameObject.OnGUI();
 	    }
 
-		public void CollisionEnter(ICollision collision)
-		{
-		}
+		 public void CollisionEnter(ICollision collision)
+		 {
+		 }
 
-		void IComponent.StartCoroutine(string name, params object[] args)
-		{
-			base.StartCoroutine("CoroutineBridge", new object[] { this, name, args });
-		}
+		 void IComponent.StartCoroutine(string name, params object[] args)
+		 {
+		 	base.StartCoroutine("CoroutineBridge", new object[] { this, name, args });
+		 }
 
-		void IComponent.StartCoroutine (IEnumerator coroutine)
-		{
-			base.StartCoroutine(coroutine);
-		}
+		 void IComponent.StartCoroutine (IEnumerator coroutine)
+		 {
+		 	base.StartCoroutine(coroutine);
+		 }
 
-		void IComponent.StartCoroutine (string coroutine)
-		{
-			base.StartCoroutine(coroutine);
-		}
+		 void IComponent.StartCoroutine (string coroutine)
+		 {
+		 	base.StartCoroutine(coroutine);
+		 }
 
-		void IComponent.StopCoroutines()
-		{
-			base.StopAllCoroutines();
-		}
+		 void IComponent.StopCoroutines()
+		 {
+		 	base.StopAllCoroutines();
+		 }
 
-		void IComponent.StopCoroutine(string coroutine)
-		{
-			base.StopCoroutine(coroutine);
-		}
+		 void IComponent.StopCoroutine(string coroutine)
+		 {
+		 	base.StopCoroutine(coroutine);
+		 }
 
 	    public void CollisionEnter(UnityEngine.Collision c) {
 	        UnityBridgeComponent other = c.gameObject.GetComponent<UnityBridgeComponent>();

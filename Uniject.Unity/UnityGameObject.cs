@@ -9,7 +9,7 @@ namespace Uniject.Unity {
 	{
 		private List<IComponent> components = new List<IComponent>();
 		
-		public IComponent Bridge { get { return bridge; } }
+		public IComponent Bridge { get { return bridge as IComponent; } }
 		private UnityBridgeComponent bridge;
 		
 		public ITransform Transform { get; private set; }
