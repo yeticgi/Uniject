@@ -32,16 +32,13 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Ninject">
-      <HintPath>..\packages\Uniject.1.0.0\lib\net35\Ninject.dll</HintPath>
-    </Reference>
-    <Reference Include="Uniject">
-      <HintPath>..\packages\Uniject.1.0.0\lib\net35\Uniject.dll</HintPath>
+      <HintPath>..\lib\Ninject.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -91,5 +88,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Uniject\Uniject.csproj">
+      <Project>{C85AE4D3-4097-4336-A7FF-B2F286103C34}</Project>
+      <Name>Uniject</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>

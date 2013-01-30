@@ -15,7 +15,7 @@
   </metadata>
   <files>
     <file src="bin/Release/Uniject.dll" target="lib/net35" />
-    <file src="lib/Ninject.dll" target="lib/net35" />
-    <file src="lib/System.Xml.Linq.dll" target="lib/net35" />
+    <file src="bin/../../lib/Ninject.dll" target="lib/net35" />
+    <file src="bin/../../lib/System.Xml.Linq.dll" target="lib/net35" />
   </files>
 </package>
