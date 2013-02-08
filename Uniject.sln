@@ -8,12 +8,17 @@ EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{94F2BFB1-C7C7-4A0E-954F-B46E8DCE66DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{94F2BFB1-C7C7-4A0E-954F-B46E8DCE66DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94F2BFB1-C7C7-4A0E-954F-B46E8DCE66DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94F2BFB1-C7C7-4A0E-954F-B46E8DCE66DD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C85AE4D3-4097-4336-A7FF-B2F286103C34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C85AE4D3-4097-4336-A7FF-B2F286103C34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C85AE4D3-4097-4336-A7FF-B2F286103C34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C85AE4D3-4097-4336-A7FF-B2F286103C34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Uniject\Uniject.csproj

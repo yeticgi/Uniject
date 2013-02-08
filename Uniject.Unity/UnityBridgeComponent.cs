@@ -6,7 +6,7 @@ using System.Collections;
 
 namespace Uniject.Unity
 {
-	public class UnityBridgeComponent : MonoBehaviour, IComponent
+	public class UnityBridgeComponent : MonoBehaviour, IUnityBridgeComponent
 	{
 		public void Awake()
 		{
@@ -25,13 +25,18 @@ namespace Uniject.Unity
 	        _gameObject.OnGUI();
 	    }
 
-		 public void CollisionEnter(ICollision collision)
-		 {
-		 }
+		 public void CollisionEnter (ICollision collision)
+		{
+		}
 
-		 void IComponent.StartCoroutine(string name, params object[] args)
+		public void StartCoroutine (string coroutine, object _this, object[] args)
+		{
+			base.StartCoroutine("CoroutineBridge", new object[] { _this, coroutine, args });
+		}
+
+		 void IComponent.StartCoroutine(string coroutine, params object[] args)
 		 {
-		 	base.StartCoroutine("CoroutineBridge", new object[] { this, name, args });
+			StartCoroutine(coroutine, this, args);
 		 }
 
 		 void IComponent.StartCoroutine (IEnumerator coroutine)
@@ -41,7 +46,7 @@ namespace Uniject.Unity
 
 		 void IComponent.StartCoroutine (string coroutine)
 		 {
-		 	base.StartCoroutine(coroutine);
+		 	(this as IComponent).StartCoroutine(coroutine, new object[0]);
 		 }
 
 		 void IComponent.StopCoroutines()
@@ -67,10 +72,16 @@ namespace Uniject.Unity
 
 	    public IEnumerator CoroutineBridge (object[] packedArgs)
 	    {
-	        object _this = packedArgs[0];
-	        string coroutineName = packedArgs[1] as string;
-	        object[] args = packedArgs[2] as object[];
-	        return _this.GetType ().InvokeMember(coroutineName, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic, null, _this, args) as IEnumerator;
+	        var _this = packedArgs[0];
+			var type = _this.GetType();
+	        var coroutineName = packedArgs[1] as string;
+	        var args = packedArgs[2] as object[];
+			var method = _this.GetType().GetMethod(coroutineName, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic);
+			if (method == null)
+			{
+				throw new Exception(String.Format ("Method {0} not found on type {1}", coroutineName, type));
+			}
+			return method.Invoke(_this, args) as IEnumerator;
 	    }
 
 		private UnityGameObject _gameObject;
