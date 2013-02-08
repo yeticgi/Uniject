@@ -67,12 +67,13 @@ namespace Uniject.Unity
 
 		public IEnumerator<ITransform> GetEnumerator()
 		{
-			return transform.Cast<ITransform>().GetEnumerator();
+			return (from UnityEngine.Transform child in transform
+					select child.ToUniject() as ITransform).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			return transform.GetEnumerator();
+			return this.GetEnumerator();
 		}
     }
 }

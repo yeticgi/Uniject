@@ -4,7 +4,7 @@ namespace Uniject
 {
 	public interface IGameObject
 	{
-		IComponent Bridge { get; }
+		IUnityBridgeComponent Bridge { get; }
 		void RegisterComponent(IComponent component);
 		T GetComponent<T>() where T : class;
 		T[] GetComponentsInChildren<T>() where T : class;

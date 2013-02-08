@@ -26,19 +26,19 @@ namespace Uniject.Unity
             }
         }
 
-        public void StartCoroutine(string name, params object[] args)
+        public void StartCoroutine(string coroutine, params object[] args)
         {
-            GameObject.Bridge.StartCoroutine ("CoroutineBridge", new object[] { this, name, args });
+            GameObject.Bridge.StartCoroutine (this, coroutine, args);
         }
 
 		public void StartCoroutine (string coroutine)
 		{
-			GameObject.Bridge.StartCoroutine(coroutine);
+			GameObject.Bridge.StartCoroutine(this, coroutine, new object[0]);
 		}
 
         public void StartCoroutine(IEnumerator coroutine)
         {
-            GameObject.Bridge.StartCoroutine(coroutine); // TODO: Use a named method to kick this off so IEnumerator-based coroutines also stop when using StopCoroutines()
+            GameObject.Bridge.StartCoroutine(coroutine);
         }
 
         public void StopCoroutines()

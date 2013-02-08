@@ -4,7 +4,7 @@ namespace Uniject
 {
 	public interface IUnityBridgeComponent : IComponent
 	{
-		void StartCoroutine(string coroutine, object _this, object[] args);
+		void StartCoroutine(object _this, string coroutine, object[] args);
 	}
 }
 

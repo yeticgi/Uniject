@@ -29,24 +29,24 @@ namespace Uniject.Unity
 		{
 		}
 
-		public void StartCoroutine (string coroutine, object _this, object[] args)
+		public void StartCoroutine (object _this, string coroutine, object[] args)
 		{
 			base.StartCoroutine("CoroutineBridge", new object[] { _this, coroutine, args });
 		}
 
 		 void IComponent.StartCoroutine(string coroutine, params object[] args)
 		 {
-			StartCoroutine(coroutine, this, args);
+			throw new NotImplementedException();
 		 }
 
 		 void IComponent.StartCoroutine (IEnumerator coroutine)
 		 {
-		 	base.StartCoroutine(coroutine);
+			base.StartCoroutine("CoroutineBridgeEnumerator", coroutine);
 		 }
 
 		 void IComponent.StartCoroutine (string coroutine)
 		 {
-		 	(this as IComponent).StartCoroutine(coroutine, new object[0]);
+			throw new NotImplementedException();
 		 }
 
 		 void IComponent.StopCoroutines()
@@ -76,13 +76,21 @@ namespace Uniject.Unity
 			var type = _this.GetType();
 	        var coroutineName = packedArgs[1] as string;
 	        var args = packedArgs[2] as object[];
-			var method = _this.GetType().GetMethod(coroutineName, BindingFlags.InvokeMethod | BindingFlags.Public | BindingFlags.NonPublic);
+			var method = type.GetMethod(coroutineName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
 			if (method == null)
 			{
 				throw new Exception(String.Format ("Method {0} not found on type {1}", coroutineName, type));
 			}
 			return method.Invoke(_this, args) as IEnumerator;
 	    }
+
+		public IEnumerator CoroutineBridgeEnumerator (IEnumerator enumerator)
+		{
+			while (enumerator.MoveNext())
+			{
+				yield return enumerator.Current;
+			}
+		}
 
 		private UnityGameObject _gameObject;
 		public IGameObject GameObject {
