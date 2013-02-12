@@ -66,9 +66,6 @@ namespace Uniject.Unity {
 
 		public T GetComponentInChildren<T> () where T : class
 		{
-			foreach (var method in typeof(GameObject).GetMethods ().Where (m => m.Name == "GetComponentInChildren")) {
-				Console.WriteLine ("{0}", method.ContainsGenericParameters, method.ReturnType, String.Join (", ", method.GetParameters().Select (p => p.ParameterType.ToString()).ToArray()));
-			}
 			return typeof(GameObject).GetMethod("GetComponentInChildren", new Type[0]).MakeGenericMethod(new [] { typeof(T) }).Invoke(GameObject, new object[0]) as T;
 		}
 		
