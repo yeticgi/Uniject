@@ -12,6 +12,7 @@ namespace Uniject
 		ITransform Transform { get; }
 		string Name { get; set; }
 		void DontDestroyOnLoad();
+		bool Active { get; set; }
 	}
 }
 

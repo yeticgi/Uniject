@@ -32,7 +32,7 @@ namespace Uniject.Unity {
 		public bool destroyed { get; private set; }
 		
 		public void Update() {
-			if (active) {
+			if (Active) {
 				for (int t = 0; t < components.Count; t++) {
 					IComponent component = components[t];
 					component.Update();
@@ -46,7 +46,7 @@ namespace Uniject.Unity {
 		}
 		
 		public void OnGUI() {
-			if (active) {
+			if (Active) {
 				for (int t = 0; t < components.Count; t++) {
 					IComponent component = components[t];
 					component.OnGUI();
@@ -88,7 +88,7 @@ namespace Uniject.Unity {
             GameObject.Destroy (this.GameObject);
         }
 
-        public bool active {
+        public virtual bool Active {
             get { return GameObject.active; }
             set { GameObject.active = value; }
         }
