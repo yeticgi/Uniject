@@ -81,7 +81,6 @@
     <Compile Include="UnityTouch.cs" />
     <Compile Include="UnityCollider.cs" />
     <Compile Include="UnityMaterial.cs" />
-    <Compile Include="ResourceAttribute.cs" />
     <Compile Include="UnityApplication.cs" />
     <Compile Include="UnityGui.cs" />
   </ItemGroup>

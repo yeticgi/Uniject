@@ -87,6 +87,7 @@
     <Compile Include="Rect.cs" />
     <Compile Include="KeyCode.cs" />
     <Compile Include="IUnityBridgeComponent.cs" />
+    <Compile Include="ResourceAttribute.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

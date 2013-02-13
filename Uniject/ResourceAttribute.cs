@@ -1,6 +1,6 @@
 using System;
 
-namespace Uniject.Unity
+namespace Uniject
 {
 	/// <summary>
 	/// Denotes a parameter should be loaded as a Resource from a specified path.
