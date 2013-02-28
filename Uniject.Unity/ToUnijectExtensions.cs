@@ -16,6 +16,10 @@ namespace Uniject.Unity
 
 		public static UnityTransform ToUniject(this UnityEngine.Transform t)
 		{
+			if (t == null)
+			{
+				return null;
+			}
 			return new UnityTransform(t);
 		}
 

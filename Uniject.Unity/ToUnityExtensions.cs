@@ -28,6 +28,11 @@ namespace Uniject.Unity
 		{
 			return new UnityEngine.Rect(r.Left, r.Top, r.Width, r.Height);
 		}
+
+		public static UnityEngine.Transform ToUnity(this ITransform t)
+		{
+			return (t as UnityTransform).Transform;
+		}
 	}
 }
 

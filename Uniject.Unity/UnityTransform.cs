@@ -6,75 +6,72 @@ using System.Collections;
 
 namespace Uniject.Unity
 {
-    public class UnityTransform : UnityComponent, ITransform {
+    public class UnityTransform : UnityComponent, ITransform
+    {
+        public Transform Transform { get; set; }
 
-        private Transform transform { get; set; }
-
-        public UnityTransform (Transform transform) : base(transform.gameObject.ToUniject()) {
-            this.transform = transform;
+        public UnityTransform(Transform transform) : base(transform.gameObject.ToUniject())
+        {
+            this.Transform = transform;
         }
 
         public Vector3 Position {
-            get { return transform.position.ToUniject(); }
-            set { transform.position = value.ToUnity(); }
+            get { return Transform.position.ToUniject(); }
+            set { Transform.position = value.ToUnity(); }
         }
 
         public Vector3 LocalScale {
-            get { return transform.localScale.ToUniject(); }
-            set { transform.localScale = value.ToUnity(); }
+            get { return Transform.localScale.ToUniject(); }
+            set { Transform.localScale = value.ToUnity(); }
         }
 
         public Quaternion Rotation {
-            get { return transform.rotation.ToUniject(); }
-            set { transform.rotation = value.ToUnity(); }
+            get { return Transform.rotation.ToUniject(); }
+            set { Transform.rotation = value.ToUnity(); }
         }
 
         public Vector3 Forward {
-            get { return transform.forward.ToUniject(); }
-            set { transform.forward = value.ToUnity(); }
+            get { return Transform.forward.ToUniject(); }
+            set { Transform.forward = value.ToUnity(); }
         }
 
         public Vector3 Up {
-            get { return transform.up.ToUniject(); }
-            set { transform.up = value.ToUnity(); }
+            get { return Transform.up.ToUniject(); }
+            set { Transform.up = value.ToUnity(); }
         }
 
-        private ITransform actualParent;
         public ITransform Parent {
-            get { return actualParent; }
-            set {
-                this.transform.parent = ((UnityTransform)value).transform;
-                this.actualParent = value;
-            }
+            get { return Transform.parent.ToUniject(); }
+            set { Transform.parent = value.ToUnity(); }
         }
 
         public void Translate(Vector3 byVector) {
-            transform.Translate(byVector.ToUnity());
+            Transform.Translate(byVector.ToUnity());
         }
 
         public void LookAt(Vector3 point) {
-            transform.LookAt(point.ToUnity());
+            Transform.LookAt(point.ToUnity());
         }
 
-		public ITransform Find(string name)
-		{
-			return transform.Find (name).ToUniject();
-		}
+        public ITransform Find(string name)
+        {
+          return Transform.Find (name).ToUniject();
+        }
 
         public Vector3 TransformDirection(Vector3 dir) {
-            return transform.TransformDirection(dir.ToUnity()).ToUniject();
+            return Transform.TransformDirection(dir.ToUnity()).ToUniject();
         }
 
-		public IEnumerator<ITransform> GetEnumerator()
-		{
-			return (from UnityEngine.Transform child in transform
-					select child.ToUniject() as ITransform).GetEnumerator();
-		}
+        public IEnumerator<ITransform> GetEnumerator()
+        {
+          return (from UnityEngine.Transform child in Transform
+              select child.ToUniject() as ITransform).GetEnumerator();
+        }
 
-		IEnumerator IEnumerable.GetEnumerator()
-		{
-			return this.GetEnumerator();
-		}
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+          return this.GetEnumerator();
+        }
     }
 }
 
