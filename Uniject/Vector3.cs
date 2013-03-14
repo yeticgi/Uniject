@@ -19,6 +19,21 @@ namespace Uniject
 		{
 		}
 
+        public float Magnitude
+        {
+            get { return (float)Math.Sqrt(Math.Pow(X, 2) + Math.Pow(Y, 2) + Math.Pow(Z, 2)); }
+        }
+
+        public static float Distance (Vector3 a, Vector3 b)
+        {
+            return (b - a).Magnitude;
+        }
+
+        public static Vector3 operator -(Vector3 a, Vector3 b)
+        {
+            return new Vector3(a.X - b.X, a.Y - b.Y, a.Z - b.Z);
+        }
+
 		public static Vector3 Lerp(Vector3 start, Vector3 end, float percentage)
 		{
 			return new Vector3(

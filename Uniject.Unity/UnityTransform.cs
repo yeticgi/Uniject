@@ -49,6 +49,10 @@ namespace Uniject.Unity
             Transform.Translate(byVector.ToUnity());
         }
 
+        public void Rotate(Vector3 eulerAngle, Space space = Space.Self) {
+            Transform.Rotate(eulerAngle.ToUnity(), (UnityEngine.Space)space);
+        }
+
         public void LookAt(Vector3 point) {
             Transform.LookAt(point.ToUnity());
         }

@@ -33,6 +33,7 @@ namespace Uniject
         ITransform Parent { get; set; }
 
         void Translate(Vector3 byVector);
+        void Rotate(Vector3 eulerAngle, Space space = Space.Self);
         void LookAt(Vector3 point);
         Vector3 TransformDirection(Vector3 dir);
         ITransform Find(string name);
